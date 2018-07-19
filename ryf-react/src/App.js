@@ -49,7 +49,8 @@ class App extends Component {
 }
   modal(type,row) {
     this.setState({
-      visible: true
+      visible: true,
+      modalType: type //更改type为edit
     },()=>{
       this.props.form.resetFields();
       if(type==='add') return;
@@ -58,15 +59,32 @@ class App extends Component {
         password: row.password,
         address: row.address
       })
+      this.setState({
+        editRow: row
+      })
     })
   }
   handleOk () {
     this.props.form.validateFieldsAndScroll((err, values)=>{
-      console.log(values)
+      const { username, password, address } = values
+      const _id = this.state.id++;
       if(!err) {
+        if(this.state.modalType === 'add') {    //点击添加按钮的ok时，type为默认add
+          this.state.users.push({
+            username,
+            password,
+            address,
+            id: _id
+          })
+        }else {
+          this.state.users.forEach((item) => {
+            if(item.id === this.state.editRow.id) {
+              item = Object.assign(item,values)
+            }
+          })
+        }
         this.setState({
           visible: false,
-          users: [values]
         })
       }
     })
@@ -78,7 +96,10 @@ class App extends Component {
       password: 'zhaolele029',
       address: '杭州',
       id: 1
-    }]
+    }],
+    modalType: 'add',
+    id: 2,
+    editRow: {}
   }
   render() {
     const { getFieldDecorator } = this.props.form;
