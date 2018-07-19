@@ -3,7 +3,7 @@ import './App.css';
 
 class App extends Component {
   render() {
-    const names = ['Alice', 'Emily', '邬嗣敏大帝']
+    const names = ['邬嗣敏', '邓志远', '廖若晨']
     return (
       <div className="App">
         <ul>
