@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // 对react ui 来自于阿里的antd 部分引用
-import { Table, Pagnation, Input, Row, Button, Modal, Form } from 'antd';
+import { Table, Pagnation, Input, Row, Button, Modal, Form, message } from 'antd';
 import 'antd/dist/antd.css'
 import './App.css'
 import axios from 'axios'
@@ -70,22 +70,17 @@ class App extends Component {
       const { username, password, address } = values
       const _id = this.state.id++;
       if(!err) {
-        if(this.state.modalType === 'add') {    //点击添加按钮的ok时，type为默认add
-          this.state.users.push({
-            username,
-            password,
-            address,
-            id: _id
-          })
-        }else {
-          this.state.users.forEach((item) => {
-            if(item.id === this.state.editRow.id) {
-              item = Object.assign(item,values)
-            }
-          })
+        let data = {
+          username: values.username,
+          password: values.password,
+          address: values.address
         }
-        this.setState({
-          visible: false,
+        console.log(data)
+        axios.post('http://localhost:3006/user', data).then(msg => {
+          this.setState({
+            visible: false,
+          })
+          message.success('添加成功')
         })
       }
     })

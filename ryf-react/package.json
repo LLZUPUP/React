@@ -6,12 +6,15 @@
     "antd": "^3.7.0",
     "axios": "^0.18.0",
     "koa": "^2.5.2",
+    "koa-body": "^4.0.4",
     "koa-cors": "^0.0.16",
     "koa-router": "^7.4.0",
+    "mysql2": "^1.5.3",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "sequelize": "^4.38.0"
   },
   "scripts": {
     "server": "nodemon server/app.js",
