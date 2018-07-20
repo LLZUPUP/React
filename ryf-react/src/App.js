@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Table, Pagnation, Input, Row, Button, Modal, Form } from 'antd';
 import 'antd/dist/antd.css'
 import './App.css'
+import axios from 'axios'
 const { Search } = Input
 const FormItem = Form.Item
 const { confirm } = Modal
@@ -89,6 +90,11 @@ class App extends Component {
       }
     })
   }
+  searchUser (event) {
+    axios.get('http://localhost:3006/users').then(data=>{
+      console.log(data.data)
+    })
+  }
   state = {
     visible: false,
     users: [{
@@ -116,7 +122,7 @@ class App extends Component {
     return (
       <div className="App">
         <Row>
-          <Search style={{width: 300}}></Search>
+          <Search style={{width: 300}} onChange={ this.searchUser.bind(this) }></Search>
           <Button type="primary" style={{marginLeft: 20}} onClick={()=>this.modal('add')}>添加用户</Button>
         </Row>
         <Row style={{paddingTop: 20}}>
