@@ -2,7 +2,9 @@ const Koa = require('koa')
 const app = new Koa()
 const Router = require('koa-router')
 
-const router = new Router()
+const router = new Router({
+  prefix: '/llzz'
+})
 router.get('/',(ctx, next)=> {
   ctx.body = '<h1>hello zhaolele</h1>'
 })
