@@ -49,8 +49,8 @@ module.exports = {
   },
   plugins: [
     new MinCssExtractPlugin({
-      filename: 'static/css/[name].css',
-      chunkFilename: 'static/css[id].css'
+      filename: '[name].[chunkhash:8].css',
+      chunkFilename: '[id].css'
     }),
     new HtmlWebpackPlugin({
       file: 'index.html',
