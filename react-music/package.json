@@ -1,0 +1,23 @@
+{
+  "name": "react-music",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-scripts": "1.1.4",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2"
+  },
+  "scripts": {
+    "start": "node scripts/customized-build start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "poststylus": "^1.0.0",
+    "proxyquire": "^2.0.1",
+    "rewire": "^4.0.1"
+  }
+}
