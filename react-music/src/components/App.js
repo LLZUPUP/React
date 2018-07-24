@@ -43,11 +43,9 @@ class App extends Component {
                 <Redirect from='/' to="/recommend"/>
                 <Route component={Recommend}></Route>
             </Switch>
-            
           </div>
         </div>
       </Router>
-
     );
   }
 }
