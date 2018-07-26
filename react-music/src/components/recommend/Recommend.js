@@ -67,9 +67,9 @@ class Recommend extends Component {
   }
   render () {
     let albums = this.state.newAlbums.map( item => {
-      console.log(item)
+      // console.log(item)
       const album = AlbumModel.createAlbumByList(item)
-      console.log(album)
+      // console.log(album)
       return (
         <div className="album-wrapper" key={album.mId}>
           <div className="left">
