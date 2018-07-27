@@ -32,8 +32,8 @@
     position fixed
     top 88px
     left 0
-    // bottom 52px
-    bottom 0
+    bottom 52px
+    // bottom 0
     width 100%
 
 .nav-link, .link
@@ -43,3 +43,9 @@
   &.active
     color #ffd700
     border-bottom 2px solid #FFD700
+
+.translate-enter
+  transform translate3d(100%,0,0)
+  &.translate-enter-active
+    transition transform .3s
+    transform translate3d(0,0,0)

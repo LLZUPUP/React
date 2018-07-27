@@ -6,6 +6,9 @@ import * as AlbumModel from '@/model/album'
 import 'swiper/dist/css/swiper.css'
 import { CODE_SUCCESS } from '../../api/config';
 import Scroll from '@/common/scroll/Scroll'
+import Loading from '@/common/loading/Loading'
+import Album from '@/containers/Album'
+import { Route } from 'react-router-dom'
 
 class Recommend extends Component {
   constructor (props) {
@@ -13,7 +16,8 @@ class Recommend extends Component {
     this.state = {
       sliderList: [],
       newAlbums: [],
-      refreshScroll: false
+      refreshScroll: false,
+      loading: true
     }
   }
   componentDidMount () {
@@ -51,7 +55,8 @@ class Recommend extends Component {
           //   return (x["public_time"]>y["public_time"]) ? 1: -1;
           // })
           this.setState({
-            newAlbums: albumList
+            newAlbums: albumList,
+            loading: false
           },()=> {
             this.setState({
               refreshScroll: true
@@ -65,13 +70,21 @@ class Recommend extends Component {
     // console.log(this)
     window.location.href = linkUrl
   }
+  toAlbumDetail(url) {
+    return ()=> {
+      this.props.history.push({
+        pathname: url
+      })
+    }
+  }
   render () {
+    const { match } = this.props;
     let albums = this.state.newAlbums.map( item => {
       // console.log(item)
       const album = AlbumModel.createAlbumByList(item)
       // console.log(album)
       return (
-        <div className="album-wrapper" key={album.mId}>
+        <div className="album-wrapper" key={album.mId} onClick={this.toAlbumDetail(`${match.url + '/' + album.mId}`)}>
           <div className="left">
             <img src={album.img} width="100%" height="100%" alt={album.name}/>
           </div>
@@ -117,7 +130,9 @@ class Recommend extends Component {
             </div>
           </div>
         </Scroll>
-        
+        <Loading title="正在加载中.." show={this.state.loading}/>
+
+        <Route path={`${match.url + '/:id'}`} component = {Album}/>
       </div>
     )
   }

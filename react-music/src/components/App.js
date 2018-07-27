@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Route, Switch, Redirect, NavLink } from 'react
 import '@/stylus/reset.styl'
 import logo from '@/assets/imgs/logo.png'
 import './App.styl';
+import '@/stylus/font.styl'
+import '@/stylus/reset.styl'
 import MusicPlayer from '@/components/play/MusicPlayer'
 // import MiniPlayer from '@/containers/MiniPlayers'
 

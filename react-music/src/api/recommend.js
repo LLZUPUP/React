@@ -42,3 +42,4 @@ export function getNewAlbum() {
 	};
 	return jsonp(URL.newalbum, data, option);
 }
+
