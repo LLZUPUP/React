@@ -153,7 +153,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 exports.setAttribute = setAttribute;
 function setAttribute(dom, name, value) {
     if (name === 'className') name = 'class';
-    if (/on\w+/g.test(name)) {
+    if (/on\W+/g.test(name)) {
         name = name.toLowerCase();
         dom[name] = value || '';
     } else if (name === 'style') {
@@ -260,7 +260,8 @@ _reactDom2.default.render(_react2.default.createElement(
     'span',
     { className: 'rt', onClick: 'console.log(\'zz\')', style: { fontSize: 20, fontWeight: 'bold' } },
     ' World! '
-  )
+  ),
+  _react2.default.createElement(Counter, null)
 ), document.getElementById('root'));
 },{"./react":"src/react/index.js","./react-dom":"src/react-dom/index.js"}],"../../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];

@@ -1,6 +1,6 @@
 export function setAttribute(dom, name, value) {
   if(name === 'className') name = 'class';
-  if(/on\w+/g.test(name)) {
+  if(/on\W+/g.test(name)) {
       name = name.toLowerCase()
       dom[name] = value || ''
   }else if (name === 'style') {
